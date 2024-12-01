@@ -14,14 +14,14 @@
 			<nav id="w0" class="navbar-inverse navbar-fixed-top custom-navbar navbar"><div class="container-fluid"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w0-collapse"><span class="sr-only">Toggle navigation</span>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
-							<span class="icon-bar"></span></button><a class="navbar-brand" href="/">
+							<span class="icon-bar"></span></button><a class="navbar-brand" href="../">
 							<img src="../img/logo_Flacso.png" class="logo-flacso"/>
 							<img src="../img/logo_unicef.png"/>
 							<img src="../img/logo_agencia_i_d_i.png"/>
-						</a></div><div id="w0-collapse" class="collapse navbar-collapse"><ul id="w1" class="navbar-nav navbar-right nav"><li class="showLoadingMenuItem"><a href="/site/index">Inicio</a></li>
-								<li class="showLoadingMenuItem"><a href="/site/acercade">Acerca de</a></li>
-								<li class="showLoadingMenuItem"><a href="/actualizarinformacion/crear">Actualizar información</a></li>
-								<li class="showLoadingMenuItem"><a href="/preguntasfrecuentes/index">Preguntas frecuentes</a></li>
+						</a></div><div id="w0-collapse" class="collapse navbar-collapse"><ul id="w1" class="navbar-nav navbar-right nav"><li class="showLoadingMenuItem"><a href="../">Inicio</a></li>
+								<li class="showLoadingMenuItem"><a href="../site/acercade">Acerca de</a></li>
+								<li class="showLoadingMenuItem"><a href="../actualizarinformacion/crear">Actualizar información</a></li>
+								<li class="showLoadingMenuItem"><a href="../preguntasfrecuentes/index">Preguntas frecuentes</a></li>
 								<li><a href="https://www.ecys.flacso.org.ar/ries" target="_blank">Sitio RIES</a></li>
 								<li class="showLoadingMenuItem active"><a href="contacto">Contacto</a></li>
 							</ul></div></div></nav>
@@ -104,5 +104,15 @@
 				$(function () { 
 					$("[data-toggle='popover']").popover(); 
 				});
+				
+				$(function () {
+					if (window.location.protocol='file:') {
+						document.querySelectorAll('a').forEach(e => { let h= e.attributes.href?.nodeValue; if (h) { 
+							e.attributes.href.nodeValue= h.endsWith('/') ? h+'index.html' : h.replace(/^(.+?)(\?.*)?$/,'$1.html$2')
+						}})
+					}
+				});
+
+
 			});</script></body>
 </html>
