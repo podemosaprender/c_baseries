@@ -108,7 +108,7 @@
 										<br>
 										<br></a></div>
 								<div id="productos" class="collapse">{% for pu_id, pu in pj.publicaciones %}
-										<div id="{{ pu.id }}" class="subseccion-detalle">
+										<div id="{{ pu.idpu }}" class="subseccion-detalle">
 											<div class="container-ver-mas"><a id="mostrar-ver-mas-{{ pu.id }}" class="custom-collapse collapse-producto change-background collapsed" data-toggle="collapse" data-target="#ver-mas-{{ pu.id }}" data-proyecto-id="{{ pj.id }}" data-producto-id="{{ pu.id }}">
 													<div class="row">
 														<div class="col-md-9">
@@ -293,8 +293,9 @@
 						return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
 					};
 
-					var tab = qs('tab');
-					if (tab) {
+					var tab_pu = qs('tab');
+					if (tab_pu) {
+						var tab= '{{ pj.id }}__'+tab_pu;
 						$('#mostrar-productos').click();
 						$('#mostrar-ver-mas-' + tab).click();
 						$('html, body').animate({
